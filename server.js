@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -12,15 +11,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rutas
-app.get("/ping", (req, res) => {
-  res.send("pong");
-});
-
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 
-// Conexión DB y arranque del servidor
 const PORT = process.env.PORT || 3000;
 mongoose
   .connect(process.env.MONGO_URI)
